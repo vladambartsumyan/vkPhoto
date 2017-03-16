@@ -11,6 +11,12 @@ import SwiftyVK
 
 class PhotosViewController: LiveViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var errorImage: UIImageView!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
+    var additionalView: UIView? = nil
+    
     var album: Album!
     
     var photos: [Photo] = []
@@ -26,6 +32,7 @@ class PhotosViewController: LiveViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadPhotos()
+        self.view.layoutSubviews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,6 +47,21 @@ class PhotosViewController: LiveViewController, UITableViewDelegate, UITableView
         
         guard InternetConnectionChecker.check() else {
             self.photos = Store.repository.getPhotos(with: album.id)
+            self.offlineMode(shouldShowError: false)
+            DispatchQueue.main.async {
+                if self.photos.count == 0 && self.album.size != 0 {
+                    self.showCloud()
+                }
+                if self.photos.count == 0 && self.album.size == 0 {
+                    self.showEmpty()
+                }
+                if self.photos.count != 0 {
+                    self.self.hideAll()
+                }
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
             return
         }
         
@@ -51,12 +73,52 @@ class PhotosViewController: LiveViewController, UITableViewDelegate, UITableView
             if error == nil {
                 self.photos = photos
                 DispatchQueue.main.async {
+                    if photos.count == 0 && source == .server {
+                        self.showEmpty()
+                    } else {
+                        self.hideAll()
+                    }
+                }
+                DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             } else {
+                DispatchQueue.main.async {
+                    if self.photos.count == 0 {
+                        self.showCloud()
+                    } else {
+                        self.hideAll()
+                    }
+                }
                 self.offlineMode(shouldShowError: false)
             }
         }
+    }
+    
+    func hideAll() {
+        tableView.isHidden = false
+        errorImage.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    func showCloud() {
+        errorImage.image = #imageLiteral(resourceName: "sad_black.png")
+        errorImage.isHidden = false
+        errorLabel.text = "Не удалось загрузить фотографии"
+        errorLabel.isHidden = false
+        tableView.isHidden = true
+    }
+    
+    func showEmpty() {
+        errorImage.image = #imageLiteral(resourceName: "photo.png")
+        errorImage.isHidden = false
+        errorLabel.text = "Альбом пуст"
+        errorLabel.isHidden = false
+        tableView.isHidden = true
+    }
+    
+    func addSubview() {
+        self.view.addSubview(self.additionalView!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,6 +163,10 @@ class PhotosViewController: LiveViewController, UITableViewDelegate, UITableView
         let photo = sender as! Photo
         let dvc = segue.destination as! ConcretePhotoViewController
         dvc.photo = photo
+    }
+    
+    override func reloadData() {
+        loadPhotos()
     }
     
     @IBAction func updateTouched(_ sender: UIBarButtonItem) {

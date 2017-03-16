@@ -34,7 +34,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NId-hi-6dd">
-                                <rect key="frame" x="32.5" y="466.5" width="256" height="39.5"/>
+                                <rect key="frame" x="32" y="466.5" width="256" height="39.5"/>
                                 <color key="backgroundColor" red="0.33428692817687988" green="0.45386701822280884" blue="0.593159019947052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NId-hi-6dd" secondAttribute="height" multiplier="13:2" id="C6K-TY-gKy"/>
@@ -161,14 +161,34 @@
                                     <outlet property="delegate" destination="4Tl-cb-Cng" id="zTX-Dl-a6d"/>
                                 </connections>
                             </tableView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="wcG-n8-kyb">
+                                <rect key="frame" x="115" y="162" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wcG-n8-kyb" secondAttribute="height" id="Ele-WN-GcW"/>
+                                    <constraint firstAttribute="height" constant="90" id="O0x-c4-htx"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не удалось загрузить список альбомов" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gh-28-96c">
+                                <rect key="frame" x="70" y="267" width="180" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="Zph-RM-inC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ndx-QD-yI8" secondAttribute="trailing" id="ANb-RK-9D9"/>
                             <constraint firstItem="Ndx-QD-yI8" firstAttribute="top" secondItem="L26-5I-Id6" secondAttribute="bottom" id="J06-sL-EhR"/>
+                            <constraint firstItem="1gh-28-96c" firstAttribute="top" secondItem="wcG-n8-kyb" secondAttribute="bottom" constant="15" id="NhV-WJ-XKV"/>
+                            <constraint firstItem="wcG-n8-kyb" firstAttribute="centerY" secondItem="0p2-Sh-Ysl" secondAttribute="centerY" constant="-45" id="R6p-l5-ybM"/>
                             <constraint firstItem="Ndx-QD-yI8" firstAttribute="leading" secondItem="0p2-Sh-Ysl" secondAttribute="leading" id="VWo-xr-AwC"/>
                             <constraint firstItem="d85-Mt-gbJ" firstAttribute="top" secondItem="Ndx-QD-yI8" secondAttribute="bottom" id="hrB-9K-tOG"/>
+                            <constraint firstItem="wcG-n8-kyb" firstAttribute="centerX" secondItem="0p2-Sh-Ysl" secondAttribute="centerX" id="r1Y-St-j3w"/>
+                            <constraint firstItem="1gh-28-96c" firstAttribute="centerX" secondItem="wcG-n8-kyb" secondAttribute="centerX" id="ruC-YR-aph"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Альбомы" id="JZX-44-jHh">
@@ -185,6 +205,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cloud" destination="wcG-n8-kyb" id="xI3-3k-IRt"/>
+                        <outlet property="errorLabel" destination="1gh-28-96c" id="b2U-wR-Tjd"/>
                         <outlet property="tableView" destination="Ndx-QD-yI8" id="ai3-ja-RIe"/>
                         <segue destination="ral-QF-bTB" kind="show" identifier="openAlbum" id="Bfh-Py-4AA"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="exit" id="cWy-zK-Rlv"/>
@@ -192,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDR-cS-Eci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1760.8695652173915" y="19.565217391304348"/>
+            <point key="canvasLocation" x="1760.625" y="19.014084507042252"/>
         </scene>
         <!--Title-->
         <scene sceneID="QiH-Jc-0Z7">
@@ -267,11 +289,31 @@
                                     <outlet property="delegate" destination="ral-QF-bTB" id="Igj-VZ-xRn"/>
                                 </connections>
                             </tableView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="XPm-yP-8QB">
+                                <rect key="frame" x="115.5" y="162" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XPm-yP-8QB" secondAttribute="height" id="Ccb-1a-PZw"/>
+                                    <constraint firstAttribute="height" constant="90" id="Rmf-iF-fxz"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не удалось загрузить фотографии" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRv-Mu-JtQ">
+                                <rect key="frame" x="71" y="267" width="180" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="sbo-Zr-kfV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ar7-2G-FFD" secondAttribute="trailing" id="9jS-9P-Wcz"/>
                             <constraint firstItem="ar7-2G-FFD" firstAttribute="leading" secondItem="pYj-G5-3gJ" secondAttribute="leading" id="c6c-KP-LD3"/>
+                            <constraint firstItem="XPm-yP-8QB" firstAttribute="centerY" secondItem="pYj-G5-3gJ" secondAttribute="centerY" constant="-45" id="dEg-rI-meG"/>
+                            <constraint firstItem="IRv-Mu-JtQ" firstAttribute="top" secondItem="XPm-yP-8QB" secondAttribute="bottom" constant="15" id="kqP-7N-7ko"/>
+                            <constraint firstItem="IRv-Mu-JtQ" firstAttribute="centerX" secondItem="XPm-yP-8QB" secondAttribute="centerX" id="l03-xB-MOf"/>
+                            <constraint firstItem="XPm-yP-8QB" firstAttribute="centerX" secondItem="pYj-G5-3gJ" secondAttribute="centerX" id="mEE-0x-ns8"/>
                             <constraint firstItem="qPN-dI-M2f" firstAttribute="top" secondItem="ar7-2G-FFD" secondAttribute="bottom" id="mHS-nT-Zqk"/>
                             <constraint firstItem="ar7-2G-FFD" firstAttribute="top" secondItem="k3h-Ka-5o0" secondAttribute="bottom" id="qqY-8D-qjM"/>
                         </constraints>
@@ -285,13 +327,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="errorImage" destination="XPm-yP-8QB" id="kcb-ph-aDe"/>
+                        <outlet property="errorLabel" destination="IRv-Mu-JtQ" id="JnI-1g-yge"/>
                         <outlet property="tableView" destination="ar7-2G-FFD" id="OLp-KI-qRz"/>
                         <segue destination="M38-uW-MJi" kind="show" identifier="openPhoto" id="fqL-4k-ioJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E00-SS-dP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2886.9565217391305" y="19.565217391304348"/>
+            <point key="canvasLocation" x="2885.625" y="19.014084507042252"/>
         </scene>
         <!--Title-->
         <scene sceneID="kav-pY-Vc7">
@@ -413,10 +457,10 @@
             </objects>
             <point key="canvasLocation" x="3985.507246376812" y="19.565217391304348"/>
         </scene>
-        <!--View Controller-->
+        <!--Sad Cloud View Controller-->
         <scene sceneID="S6M-Ou-Dbo">
             <objects>
-                <viewController storyboardIdentifier="sadCloud" id="lGI-62-cw6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sadCloud" id="lGI-62-cw6" customClass="SadCloudViewController" customModule="vkPhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ayh-VZ-PP1"/>
                         <viewControllerLayoutGuide type="bottom" id="6nn-kQ-j5B"/>
@@ -453,6 +497,10 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="200"/>
+                    <connections>
+                        <outlet property="cloud" destination="NTa-1G-uY6" id="7FS-JC-EeD"/>
+                        <outlet property="massage" destination="yUC-eq-lWP" id="dvo-6p-dOd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDJ-8m-ydV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -483,5 +531,6 @@
         <image name="camera.png" width="48" height="48"/>
         <image name="logo.png" width="750" height="750"/>
         <image name="sad.png" width="1600" height="1600"/>
+        <image name="sad_black.png" width="1600" height="1600"/>
     </resources>
 </document>

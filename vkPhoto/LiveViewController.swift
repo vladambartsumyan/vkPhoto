@@ -36,6 +36,9 @@ class LiveViewController: UIViewController {
         
         reachability.whenReachable = { _ in
             self.onlineMode()
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
         }
         
         reachability.whenUnreachable = { _ in
@@ -63,7 +66,7 @@ class LiveViewController: UIViewController {
         offlineLabel.font = UIFont.boldSystemFont(ofSize: 10)
         offlineLabel.frame = CGRect(x: 0, y: -height, width: self.view.frame.width, height: height)
         offlineLabel.backgroundColor = UIColor.init(white: 0.85, alpha: 0.6)
-        offlineLabel.textColor = UIColor.init(red: 180/255, green: 64/255, blue: 35/255, alpha: 1)
+        offlineLabel.textColor = UIColor.init(red: 140/255, green: 25/255, blue: 25/255, alpha: 1)
         offlineLabel.textAlignment = .center
         self.view.addSubview(offlineLabel)
         UIView.animate(withDuration: 0.5, animations: {
@@ -110,4 +113,6 @@ class LiveViewController: UIViewController {
     func stopLoadIndication() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
+    
+    func reloadData() {}
 }

@@ -18,6 +18,10 @@ class AlbumsViewController: LiveViewController, UITableViewDelegate, UITableView
     
     var albums: [Album] = []
     
+    @IBOutlet weak var cloud: UIImageView!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         VK.config.language = "ru"
@@ -40,13 +44,21 @@ class AlbumsViewController: LiveViewController, UITableViewDelegate, UITableView
     func loadAlbums() {
         
         guard InternetConnectionChecker.check() else {
-            albums = Store.repository.getAlbums()
+            self.albums = Store.repository.getAlbums()
+            self.offlineMode(shouldShowError: false)
+            DispatchQueue.main.async {
+                self.showCloud(need: self.albums.count == 0)
+                self.tableView.reloadData()
+            }
             return
         }
         
         startLoadIndication()
         Store.repository.extractAlbums { (albums, error, source) in
             if source == .server {
+                DispatchQueue.main.async {
+                    self.showCloud(need: albums.count == 0)
+                }
                 self.stopLoadIndication()
             }
             if error == nil {
@@ -64,7 +76,10 @@ class AlbumsViewController: LiveViewController, UITableViewDelegate, UITableView
         super.didReceiveMemoryWarning()
     }
     
-    
+    func showCloud(need: Bool) {
+        cloud.isHidden = !need
+        errorLabel.isHidden = !need
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return albums.count
@@ -113,6 +128,10 @@ class AlbumsViewController: LiveViewController, UITableViewDelegate, UITableView
         alert.addAction(ok)
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    override func reloadData() {
+        loadAlbums()
     }
     
     @IBAction func updateTouched(_ sender: UIBarButtonItem) {

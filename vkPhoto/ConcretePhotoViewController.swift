@@ -31,6 +31,8 @@ class ConcretePhotoViewController: LiveViewController, UIScrollViewDelegate, UIG
     
     var map: GMSMapView?
     
+    var sadCloudView: UIView? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitle()
@@ -63,25 +65,37 @@ class ConcretePhotoViewController: LiveViewController, UIScrollViewDelegate, UIG
     
     func loadPhoto() {
         activityIndicator.startAnimating()
+        DispatchQueue.main.async {
+            self.sadCloudView?.isHidden = true
+        }
         photoImage.sd_setImage(with: URL(string: photo.bigPhoto)!) { (image, error, cacheType, imageURL) -> Void in
             self.activityIndicator.stopAnimating()
             if image == nil {
                 self.showSadCloud()
                 self.offlineMode(shouldShowError: false)
+            } else {
+                DispatchQueue.main.async {
+                    self.sadCloudView?.isHidden = true
+                }
             }
         }
     }
 
     func showSadCloud() {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let sadCloudVC = storyboard.instantiateViewController(withIdentifier: "sadCloud")
-        let sadCloudView = sadCloudVC.view!
-        sadCloudView.frame.size = CGSize.init(width: 300, height: 200)
-        sadCloudView.backgroundColor = UIColor.clear
-        sadCloudView.alpha = 0.8
-        sadCloudView.center = self.view.center
+        if sadCloudView == nil {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let sadCloudVC = storyboard.instantiateViewController(withIdentifier: "sadCloud")
+            sadCloudView = sadCloudVC.view!
+            sadCloudView?.frame.size = CGSize.init(width: 300, height: 200)
+            sadCloudView?.backgroundColor = UIColor.clear
+            sadCloudView?.alpha = 0.8
+            sadCloudView?.center = self.view.center
+            DispatchQueue.main.async {
+                self.view.addSubview(self.sadCloudView!)
+            }
+        }
         DispatchQueue.main.async {
-            self.view.addSubview(sadCloudView)
+            self.sadCloudView?.isHidden = false
         }
     }
     
@@ -154,7 +168,10 @@ class ConcretePhotoViewController: LiveViewController, UIScrollViewDelegate, UIG
                     DispatchQueue.main.async { self.progressBar.isHidden = true }
                 }
                 if error != nil {
-                    DispatchQueue.main.async { self.progressBar.isHidden = true }
+                    DispatchQueue.main.async {
+                        self.progressBar.isHidden = true
+                        self.offlineMode(shouldShowError: true)
+                    }
                 }
                 if progress != nil {
                     DispatchQueue.main.async { self.progressBar.progress = Float(progress!.0) / Float(progress!.1) }
@@ -175,5 +192,9 @@ class ConcretePhotoViewController: LiveViewController, UIScrollViewDelegate, UIG
     
     @IBAction func backgroundTouched(_ sender: UITapGestureRecognizer) {
         hideAdditionalInfo()
+    }
+    
+    override func reloadData() {
+        loadPhoto()
     }
 }
