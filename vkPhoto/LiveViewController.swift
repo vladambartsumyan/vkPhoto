@@ -37,8 +37,6 @@ class LiveViewController: UIViewController {
     }
     
     func configReachability() {
-        
-        
         reachability.whenReachable = { reachability in
             self.onlineMode()
         }
@@ -65,17 +63,19 @@ class LiveViewController: UIViewController {
         offlineLabel.backgroundColor = UIColor.init(white: 0.85, alpha: 0.6)
         offlineLabel.textColor = UIColor.init(red: 180/255, green: 64/255, blue: 35/255, alpha: 1)
         offlineLabel.textAlignment = .center
-        self.view.addSubview(offlineLabel)
-        UIView.animate(withDuration: 0.5, animations: {
-            self.offlineLabel.frame.origin.y = 0
-        }, completion: { completed in
-            UIView.animate(withDuration: 0.5, delay: 2, animations: {
-                self.offlineLabel.frame.origin.y = -height
+        DispatchQueue.main.async {
+            self.view.addSubview(self.offlineLabel)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.offlineLabel.frame.origin.y = 0
             }, completion: { completed in
-                self.offlineLabel.removeFromSuperview()
-                self.animatenow = false
+                UIView.animate(withDuration: 0.5, delay: 2, animations: {
+                    self.offlineLabel.frame.origin.y = -height
+                }, completion: { completed in
+                    self.offlineLabel.removeFromSuperview()
+                    self.animatenow = false
+                })
             })
-        })
+        }
     }
     
     func offlineMode() {
