@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReachabilitySwift
 
 class BlueNavigationController: UINavigationController {
 
@@ -14,6 +15,7 @@ class BlueNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationBar.barTintColor = UIColor.init(red: 80/255, green: 114/255, blue: 153/255, alpha: 1)
         self.navigationBar.tintColor = UIColor.white
         self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -31,24 +33,20 @@ class BlueNavigationController: UINavigationController {
     }
     
     func offlineMode() {
-        if !isOffline {
-            isOffline = true
-            DispatchQueue.main.async {
-                UIView.transition(with: self.navigationBar, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    self.navigationBar.barTintColor = UIColor.init(white: 0.5, alpha: 1)
-                }, completion: nil)
-            }
+        if !self.isOffline {
+            self.isOffline = true
+            UIView.transition(with: self.navigationBar, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                self.navigationBar.barTintColor = UIColor.init(white: 0.5, alpha: 1)
+            }, completion: nil)
         }
     }
     
     func onlineMode() {
-        if isOffline {
-            isOffline = false
-            DispatchQueue.main.async {
-                UIView.transition(with: self.navigationBar, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    self.navigationBar.barTintColor = UIColor.init(red: 80/255, green: 114/255, blue: 153/255, alpha: 1)
-                }, completion: nil)
-            }
+        if self.isOffline {
+            self.isOffline = false
+            UIView.transition(with: self.navigationBar, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                self.navigationBar.barTintColor = UIColor.init(red: 80/255, green: 114/255, blue: 153/255, alpha: 1)
+            }, completion: nil)
         }
     }
 }

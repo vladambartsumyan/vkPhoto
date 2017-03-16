@@ -28,31 +28,33 @@ class PhotosViewController: LiveViewController, UITableViewDelegate, UITableView
         loadPhotos()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     func loadPhotos() {
         
-        guard reachability.isReachable else {
+        guard InternetConnectionChecker.check() else {
             self.photos = Store.repository.getPhotos(with: album.id)
-            offlineMode()
-            if !LiveViewController.errorWasPresented {
-                showConnectionError()
-            }
             return
         }
         
-        startLoading()
+        startLoadIndication()
         Store.repository.extractPhotos(albumID: album.id) { (photos, error, source) in
-            if error != nil {
-                self.stopLoading()
-                self.offlineMode()
-            } else {
-                if source == .server {
-                    self.stopLoading()
-                    self.onlineMode()
-                }
+            if source == .server {
+                self.stopLoadIndication()
+            }
+            if error == nil {
                 self.photos = photos
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+            } else {
+                self.offlineMode(shouldShowError: false)
             }
         }
     }
@@ -102,11 +104,13 @@ class PhotosViewController: LiveViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func updateTouched(_ sender: UIBarButtonItem) {
-        if reachability.isReachable {
+        if InternetConnectionChecker.check() {
+            onlineMode()
             loadPhotos()
         } else {
-            offlineMode()
-            showConnectionErrorWithAlert()
+            DispatchQueue.main.async {
+                self.offlineMode(shouldShowError: true)
+            }
         }
     }
 }

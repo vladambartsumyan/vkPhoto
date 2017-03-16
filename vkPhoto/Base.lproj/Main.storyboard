@@ -435,9 +435,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad.png" translatesAutoresizingMaskIntoConstraints="NO" id="NTa-1G-uY6">
-                                <rect key="frame" x="116" y="44" width="68" height="68"/>
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad.png" translatesAutoresizingMaskIntoConstraints="NO" id="NTa-1G-uY6">
+                                <rect key="frame" x="105" y="30" width="90" height="90"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="LEE-TD-gUB"/>
                                     <constraint firstAttribute="width" secondItem="NTa-1G-uY6" secondAttribute="height" id="jxT-2F-vEz"/>
                                 </constraints>
                             </imageView>
@@ -446,9 +447,8 @@
                         <constraints>
                             <constraint firstItem="yUC-eq-lWP" firstAttribute="centerX" secondItem="aTe-9g-sjY" secondAttribute="centerX" id="52V-UQ-B6y"/>
                             <constraint firstItem="6nn-kQ-j5B" firstAttribute="top" secondItem="yUC-eq-lWP" secondAttribute="bottom" constant="20" id="UQL-zF-CBU"/>
-                            <constraint firstItem="NTa-1G-uY6" firstAttribute="top" secondItem="ayh-VZ-PP1" secondAttribute="bottom" constant="24" id="m12-RE-4hL"/>
                             <constraint firstItem="NTa-1G-uY6" firstAttribute="centerX" secondItem="yUC-eq-lWP" secondAttribute="centerX" id="qAE-Z3-crz"/>
-                            <constraint firstItem="yUC-eq-lWP" firstAttribute="top" secondItem="NTa-1G-uY6" secondAttribute="bottom" constant="8" id="wMu-k3-dlL"/>
+                            <constraint firstItem="yUC-eq-lWP" firstAttribute="top" secondItem="NTa-1G-uY6" secondAttribute="bottom" id="wMu-k3-dlL"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -482,6 +482,6 @@
         <image name="background.png" width="1080" height="1920"/>
         <image name="camera.png" width="48" height="48"/>
         <image name="logo.png" width="750" height="750"/>
-        <image name="sad.png" width="100" height="100"/>
+        <image name="sad.png" width="1600" height="1600"/>
     </resources>
 </document>

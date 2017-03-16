@@ -43,13 +43,17 @@ class AuthorizationViewController: LiveViewController, VKAuthorizationObserver, 
         super.didReceiveMemoryWarning()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     func authorizationCompleted(_ result: AuthorizationResult) {
         if result == .success {
             DispatchQueue.main.async {
                 self.perform(#selector(self.performLoginSegue), with: nil, afterDelay: 1)
             }
         } else {
-            stopLoading()
+            stopLoadIndication()
         }
     }
     
@@ -62,17 +66,17 @@ class AuthorizationViewController: LiveViewController, VKAuthorizationObserver, 
     }
     
     @IBAction func vkLoginTouch(_ sender: UIButton) {
-        startLoading()
-        if reachability.isReachable {
+        startLoadIndication()
+        if InternetConnectionChecker.check() {
             VK.logIn()
         } else {
-            stopLoading()
+            stopLoadIndication()
             showConnectionErrorWithAlert()
         }
     }
     
-    override func startLoading() {
-        super.startLoading()
+    override func startLoadIndication() {
+        super.startLoadIndication()
         self.button.isUserInteractionEnabled = false
         DispatchQueue.main.async {
             self.button.setTitle("", for: .normal)
@@ -80,8 +84,8 @@ class AuthorizationViewController: LiveViewController, VKAuthorizationObserver, 
         }
     }
     
-    override func stopLoading() {
-        super.stopLoading()
+    override func stopLoadIndication() {
+        super.stopLoadIndication()
         self.button.isUserInteractionEnabled = true
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()

@@ -38,8 +38,16 @@ class ConcretePhotoViewController: LiveViewController, UIScrollViewDelegate, UIG
         loadPhoto()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     func setTitle() {
@@ -58,8 +66,8 @@ class ConcretePhotoViewController: LiveViewController, UIScrollViewDelegate, UIG
         photoImage.sd_setImage(with: URL(string: photo.bigPhoto)!) { (image, error, cacheType, imageURL) -> Void in
             self.activityIndicator.stopAnimating()
             if image == nil {
-                self.offlineMode()
                 self.showSadCloud()
+                self.offlineMode(shouldShowError: false)
             }
         }
     }

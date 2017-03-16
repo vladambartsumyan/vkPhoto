@@ -29,33 +29,33 @@ class AlbumsViewController: LiveViewController, UITableViewDelegate, UITableView
         loadAlbums()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     func loadAlbums() {
         
-        guard reachability.isReachable else {
+        guard InternetConnectionChecker.check() else {
             albums = Store.repository.getAlbums()
-            offlineMode()
-            if !LiveViewController.errorWasPresented {
-                showConnectionError()
-            }
             return
         }
         
-        startLoading()
+        startLoadIndication()
         Store.repository.extractAlbums { (albums, error, source) in
-            if error != nil {
-                if source == .server {
-                    self.stopLoading()
-                    self.offlineMode()
-                }
-            } else {
-                if source == .server {
-                    self.stopLoading()
-                    self.onlineMode()
-                }
+            if source == .server {
+                self.stopLoadIndication()
+            }
+            if error == nil {
                 self.albums = albums
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+            } else {
+                self.offlineMode(shouldShowError: false)
             }
         }
     }
@@ -116,11 +116,13 @@ class AlbumsViewController: LiveViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func updateTouched(_ sender: UIBarButtonItem) {
-        if reachability.isReachable {
+        if InternetConnectionChecker.check() {
+            onlineMode()
             loadAlbums()
         } else {
-            offlineMode()
-            showConnectionErrorWithAlert()
+            DispatchQueue.main.async {
+                self.offlineMode(shouldShowError: true)
+            }
         }
     }
 }

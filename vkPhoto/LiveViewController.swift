@@ -11,20 +11,35 @@ import ReachabilitySwift
 
 class LiveViewController: UIViewController {
     
-    var reachability = Reachability()!
+    let reachability = Reachability()!
+    
+    static var online = true
     
     static var errorWasPresented = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configReachability()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if InternetConnectionChecker.check() {
+            onlineMode()
+        } else {
+            offlineMode(shouldShowError: false)
+        }
+        
         do {
             try reachability.startNotifier()
         } catch {
             print(error.localizedDescription)
+        }
+        
+        reachability.whenReachable = { _ in
+            self.onlineMode()
+        }
+        
+        reachability.whenUnreachable = { _ in
+            self.offlineMode(shouldShowError: false)
         }
     }
     
@@ -36,46 +51,31 @@ class LiveViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func configReachability() {
-        reachability.whenReachable = { reachability in
-            self.onlineMode()
-        }
-        
-        reachability.whenUnreachable = { reachability in
-            self.offlineMode()
-            self.showConnectionError()
-            LiveViewController.errorWasPresented = true
-        }
-    }
     
-    var animatenow = false
-    var offlineLabel: UILabel!
+    var isAnimating = false
     
     func showConnectionError() {
-        guard !animatenow else { return }
-        LiveViewController.errorWasPresented = true
-        animatenow = true
+        guard !isAnimating else { return }
+        isAnimating = true
         let height: CGFloat = 20.0
-        offlineLabel = UILabel()
+        let offlineLabel = UILabel()
         offlineLabel.text = "Нет доступа к сети"
         offlineLabel.font = UIFont.boldSystemFont(ofSize: 10)
         offlineLabel.frame = CGRect(x: 0, y: -height, width: self.view.frame.width, height: height)
         offlineLabel.backgroundColor = UIColor.init(white: 0.85, alpha: 0.6)
         offlineLabel.textColor = UIColor.init(red: 180/255, green: 64/255, blue: 35/255, alpha: 1)
         offlineLabel.textAlignment = .center
-        DispatchQueue.main.async {
-            self.view.addSubview(self.offlineLabel)
-            UIView.animate(withDuration: 0.5, animations: {
-                self.offlineLabel.frame.origin.y = 0
+        self.view.addSubview(offlineLabel)
+        UIView.animate(withDuration: 0.5, animations: {
+            offlineLabel.frame.origin.y = 0
+        }, completion: { completed in
+            UIView.animate(withDuration: 0.5, delay: 2, animations: {
+                offlineLabel.frame.origin.y = -height
             }, completion: { completed in
-                UIView.animate(withDuration: 0.5, delay: 2, animations: {
-                    self.offlineLabel.frame.origin.y = -height
-                }, completion: { completed in
-                    self.offlineLabel.removeFromSuperview()
-                    self.animatenow = false
-                })
+                offlineLabel.removeFromSuperview()
+                self.isAnimating = false
             })
-        }
+        })
     }
     
     func showConnectionErrorWithAlert() {
@@ -85,20 +85,29 @@ class LiveViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func offlineMode() {
-        (self.navigationController as? BlueNavigationController)?.offlineMode()
+    func offlineMode(shouldShowError: Bool) {
+        DispatchQueue.main.async {
+            if LiveViewController.online || shouldShowError {
+                LiveViewController.online = false
+                self.showConnectionError()
+            }
+            (self.navigationController as? BlueNavigationController)?.offlineMode()
+        }
     }
     
     func onlineMode() {
-        (self.navigationController as? BlueNavigationController)?.onlineMode()
-        LiveViewController.errorWasPresented = false
+        DispatchQueue.main.async {
+            LiveViewController.online = true
+            (self.navigationController as? BlueNavigationController)?.onlineMode()
+            LiveViewController.errorWasPresented = false
+        }
     }
     
-    func startLoading() {
+    func startLoadIndication() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
-    func stopLoading() {
+    func stopLoadIndication() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 }
