@@ -1,0 +1,690 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		530ADDD61E774913008E37CA /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530ADDD51E774913008E37CA /* JSONParser.swift */; };
+		53112C6A1E752FC50063C969 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53112C691E752FC50063C969 /* AlbumsViewController.swift */; };
+		53112C701E7570B20063C969 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53112C6F1E7570B20063C969 /* Album.swift */; };
+		53112C741E7580430063C969 /* BlueNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53112C731E7580430063C969 /* BlueNavigationController.swift */; };
+		53112C781E75D3270063C969 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53112C771E75D3270063C969 /* PhotosViewController.swift */; };
+		53112C7A1E75D52B0063C969 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53112C791E75D52B0063C969 /* PhotoTableViewCell.swift */; };
+		53112C7C1E75DA0D0063C969 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53112C7B1E75DA0D0063C969 /* Photo.swift */; };
+		5336DDEF1E76A6F700724FFE /* ConcretePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5336DDEE1E76A6F700724FFE /* ConcretePhotoViewController.swift */; };
+		53A388EA1E797F3C00C2958E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A388E91E797F3C00C2958E /* camera.png */; };
+		53A388EE1E79A3D600C2958E /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A388ED1E79A3D600C2958E /* LiveViewController.swift */; };
+		53E18E2F1E76E84C00A05966 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E18E2E1E76E84C00A05966 /* Repository.swift */; };
+		53E4F90A1E77154C00F5615C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4F9091E77154C00F5615C /* Store.swift */; };
+		53E5B6791E73F85B000205E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5B6781E73F85B000205E4 /* AppDelegate.swift */; };
+		53E5B67B1E73F85B000205E4 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5B67A1E73F85B000205E4 /* AuthorizationViewController.swift */; };
+		53E5B67E1E73F85B000205E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E5B67C1E73F85B000205E4 /* Main.storyboard */; };
+		53E5B6831E73F85B000205E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E5B6821E73F85B000205E4 /* Assets.xcassets */; };
+		53E5B6861E73F85B000205E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E5B6841E73F85B000205E4 /* LaunchScreen.storyboard */; };
+		53E5B68E1E73FA0C000205E4 /* VKPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5B68D1E73FA0C000205E4 /* VKPhotoDelegate.swift */; };
+		53E5B6921E741AEF000205E4 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E5B6911E741AEF000205E4 /* background.png */; };
+		53E5B6941E741F1E000205E4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E5B6931E741F1E000205E4 /* logo.png */; };
+		53E5B6961E7441AB000205E4 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5B6951E7441AB000205E4 /* AlbumTableViewCell.swift */; };
+		53E5B6991E752829000205E4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E5B6971E752829000205E4 /* Realm.framework */; };
+		53E5B69A1E752829000205E4 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53E5B6971E752829000205E4 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53E5B69B1E752829000205E4 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E5B6981E752829000205E4 /* RealmSwift.framework */; };
+		53E5B69C1E752829000205E4 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53E5B6981E752829000205E4 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53E5B6A51E752AFC000205E4 /* vkPhotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5B6A41E752AFC000205E4 /* vkPhotoTests.swift */; };
+		69B374F57E903E7599260128 /* Pods_vkPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9802F9AB00B25C82AB8EE02 /* Pods_vkPhoto.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		53E5B6A71E752AFC000205E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53E5B66D1E73F85B000205E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53E5B6741E73F85B000205E4;
+			remoteInfo = vkPhoto;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		53E5B69D1E752829000205E4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				53E5B69C1E752829000205E4 /* RealmSwift.framework in Embed Frameworks */,
+				53E5B69A1E752829000205E4 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		530ADDD51E774913008E37CA /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		53112C691E752FC50063C969 /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		53112C6F1E7570B20063C969 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		53112C731E7580430063C969 /* BlueNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueNavigationController.swift; sourceTree = "<group>"; };
+		53112C771E75D3270063C969 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		53112C791E75D52B0063C969 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		53112C7B1E75DA0D0063C969 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		5336DDEE1E76A6F700724FFE /* ConcretePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcretePhotoViewController.swift; sourceTree = "<group>"; };
+		53A388E91E797F3C00C2958E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		53A388ED1E79A3D600C2958E /* LiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
+		53E18E2E1E76E84C00A05966 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		53E4F9091E77154C00F5615C /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Store.swift; path = ../Store.swift; sourceTree = "<group>"; };
+		53E5B6751E73F85B000205E4 /* vkPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vkPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53E5B6781E73F85B000205E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		53E5B67A1E73F85B000205E4 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		53E5B67D1E73F85B000205E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		53E5B6821E73F85B000205E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		53E5B6851E73F85B000205E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		53E5B6871E73F85B000205E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53E5B68D1E73FA0C000205E4 /* VKPhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKPhotoDelegate.swift; sourceTree = "<group>"; };
+		53E5B6911E741AEF000205E4 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../background.png; sourceTree = "<group>"; };
+		53E5B6931E741F1E000205E4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../Desktop/logo.png; sourceTree = "<group>"; };
+		53E5B6951E7441AB000205E4 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		53E5B6971E752829000205E4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		53E5B6981E752829000205E4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		53E5B6A21E752AFC000205E4 /* vkPhotoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vkPhotoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53E5B6A41E752AFC000205E4 /* vkPhotoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vkPhotoTests.swift; sourceTree = "<group>"; };
+		53E5B6A61E752AFC000205E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F8F5FFC44B84D9658A3A43D /* Pods-vkPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vkPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vkPhoto/Pods-vkPhoto.debug.xcconfig"; sourceTree = "<group>"; };
+		B9802F9AB00B25C82AB8EE02 /* Pods_vkPhoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vkPhoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E05A71175632FC9C32E814D4 /* Pods-vkPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vkPhoto.release.xcconfig"; path = "Pods/Target Support Files/Pods-vkPhoto/Pods-vkPhoto.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53E5B6721E73F85B000205E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53E5B6991E752829000205E4 /* Realm.framework in Frameworks */,
+				69B374F57E903E7599260128 /* Pods_vkPhoto.framework in Frameworks */,
+				53E5B69B1E752829000205E4 /* RealmSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53E5B69F1E752AFC000205E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		530ADDD71E7753D7008E37CA /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				530ADDD51E774913008E37CA /* JSONParser.swift */,
+				53E18E2E1E76E84C00A05966 /* Repository.swift */,
+				53E4F9091E77154C00F5615C /* Store.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		530ADDD81E7753E2008E37CA /* ConcretePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				5336DDEE1E76A6F700724FFE /* ConcretePhotoViewController.swift */,
+			);
+			name = ConcretePhoto;
+			sourceTree = "<group>";
+		};
+		53112C651E752F5B0063C969 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				533DCAD31E784063000AB7A7 /* Authorization */,
+				53A388E61E797D5000C2958E /* Albums */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		53112C661E752F720063C969 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				53E5B6781E73F85B000205E4 /* AppDelegate.swift */,
+				53112C731E7580430063C969 /* BlueNavigationController.swift */,
+				53E5B68D1E73FA0C000205E4 /* VKPhotoDelegate.swift */,
+				53A388ED1E79A3D600C2958E /* LiveViewController.swift */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		53112C671E752F870063C969 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				53E5B67A1E73F85B000205E4 /* AuthorizationViewController.swift */,
+			);
+			name = Authorization;
+			sourceTree = "<group>";
+		};
+		53112C681E752FA40063C969 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				53112C691E752FC50063C969 /* AlbumsViewController.swift */,
+				53E5B6951E7441AB000205E4 /* AlbumTableViewCell.swift */,
+				53112C6F1E7570B20063C969 /* Album.swift */,
+			);
+			name = Albums;
+			sourceTree = "<group>";
+		};
+		53112C7D1E7673A00063C969 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				53112C771E75D3270063C969 /* PhotosViewController.swift */,
+				53112C791E75D52B0063C969 /* PhotoTableViewCell.swift */,
+				53112C7B1E75DA0D0063C969 /* Photo.swift */,
+			);
+			name = Photos;
+			sourceTree = "<group>";
+		};
+		533DCAD31E784063000AB7A7 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				53E5B6931E741F1E000205E4 /* logo.png */,
+				53E5B6911E741AEF000205E4 /* background.png */,
+			);
+			name = Authorization;
+			sourceTree = "<group>";
+		};
+		53A388E61E797D5000C2958E /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				53A388E91E797F3C00C2958E /* camera.png */,
+			);
+			name = Albums;
+			sourceTree = "<group>";
+		};
+		53E5B66C1E73F85B000205E4 = {
+			isa = PBXGroup;
+			children = (
+				53E5B6771E73F85B000205E4 /* vkPhoto */,
+				53E5B6A31E752AFC000205E4 /* vkPhotoTests */,
+				53E5B6761E73F85B000205E4 /* Products */,
+				CF190F63B7DF997B2C59BF1B /* Pods */,
+				64BE876E6DB160290B5881C3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		53E5B6761E73F85B000205E4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				53E5B6751E73F85B000205E4 /* vkPhoto.app */,
+				53E5B6A21E752AFC000205E4 /* vkPhotoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		53E5B6771E73F85B000205E4 /* vkPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				53112C651E752F5B0063C969 /* Resource */,
+				53112C661E752F720063C969 /* General */,
+				530ADDD71E7753D7008E37CA /* Store */,
+				53112C671E752F870063C969 /* Authorization */,
+				53112C681E752FA40063C969 /* Albums */,
+				53112C7D1E7673A00063C969 /* Photos */,
+				530ADDD81E7753E2008E37CA /* ConcretePhoto */,
+				53E5B67C1E73F85B000205E4 /* Main.storyboard */,
+				53E5B6841E73F85B000205E4 /* LaunchScreen.storyboard */,
+				53E5B6871E73F85B000205E4 /* Info.plist */,
+				53E5B6821E73F85B000205E4 /* Assets.xcassets */,
+			);
+			path = vkPhoto;
+			sourceTree = "<group>";
+		};
+		53E5B6A31E752AFC000205E4 /* vkPhotoTests */ = {
+			isa = PBXGroup;
+			children = (
+				53E5B6A41E752AFC000205E4 /* vkPhotoTests.swift */,
+				53E5B6A61E752AFC000205E4 /* Info.plist */,
+			);
+			path = vkPhotoTests;
+			sourceTree = "<group>";
+		};
+		64BE876E6DB160290B5881C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53E5B6981E752829000205E4 /* RealmSwift.framework */,
+				B9802F9AB00B25C82AB8EE02 /* Pods_vkPhoto.framework */,
+				53E5B6971E752829000205E4 /* Realm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF190F63B7DF997B2C59BF1B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F8F5FFC44B84D9658A3A43D /* Pods-vkPhoto.debug.xcconfig */,
+				E05A71175632FC9C32E814D4 /* Pods-vkPhoto.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		53E5B6741E73F85B000205E4 /* vkPhoto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53E5B68A1E73F85B000205E4 /* Build configuration list for PBXNativeTarget "vkPhoto" */;
+			buildPhases = (
+				F68913301A22D0D170EEA9A2 /* [CP] Check Pods Manifest.lock */,
+				53E5B6711E73F85B000205E4 /* Sources */,
+				53E5B6721E73F85B000205E4 /* Frameworks */,
+				53E5B6731E73F85B000205E4 /* Resources */,
+				EBCE4F515793836CBB47BEB1 /* [CP] Embed Pods Frameworks */,
+				009B06FC659A5A3F27549225 /* [CP] Copy Pods Resources */,
+				53E5B69D1E752829000205E4 /* Embed Frameworks */,
+				53E5B6AC1E752BD1000205E4 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = vkPhoto;
+			productName = vkPhoto;
+			productReference = 53E5B6751E73F85B000205E4 /* vkPhoto.app */;
+			productType = "com.apple.product-type.application";
+		};
+		53E5B6A11E752AFC000205E4 /* vkPhotoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53E5B6A91E752AFC000205E4 /* Build configuration list for PBXNativeTarget "vkPhotoTests" */;
+			buildPhases = (
+				53E5B69E1E752AFC000205E4 /* Sources */,
+				53E5B69F1E752AFC000205E4 /* Frameworks */,
+				53E5B6A01E752AFC000205E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				53E5B6A81E752AFC000205E4 /* PBXTargetDependency */,
+			);
+			name = vkPhotoTests;
+			productName = vkPhotoTests;
+			productReference = 53E5B6A21E752AFC000205E4 /* vkPhotoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53E5B66D1E73F85B000205E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Владислав Амбарцумян";
+				TargetAttributes = {
+					53E5B6741E73F85B000205E4 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = LHX7HSJRE3;
+						ProvisioningStyle = Automatic;
+					};
+					53E5B6A11E752AFC000205E4 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = LHX7HSJRE3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 53E5B6741E73F85B000205E4;
+					};
+				};
+			};
+			buildConfigurationList = 53E5B6701E73F85B000205E4 /* Build configuration list for PBXProject "vkPhoto" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 53E5B66C1E73F85B000205E4;
+			productRefGroup = 53E5B6761E73F85B000205E4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				53E5B6741E73F85B000205E4 /* vkPhoto */,
+				53E5B6A11E752AFC000205E4 /* vkPhotoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		53E5B6731E73F85B000205E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A388EA1E797F3C00C2958E /* camera.png in Resources */,
+				53E5B6861E73F85B000205E4 /* LaunchScreen.storyboard in Resources */,
+				53E5B6921E741AEF000205E4 /* background.png in Resources */,
+				53E5B6941E741F1E000205E4 /* logo.png in Resources */,
+				53E5B6831E73F85B000205E4 /* Assets.xcassets in Resources */,
+				53E5B67E1E73F85B000205E4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53E5B6A01E752AFC000205E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		009B06FC659A5A3F27549225 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-vkPhoto/Pods-vkPhoto-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53E5B6AC1E752BD1000205E4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+		EBCE4F515793836CBB47BEB1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-vkPhoto/Pods-vkPhoto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F68913301A22D0D170EEA9A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53E5B6711E73F85B000205E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5336DDEF1E76A6F700724FFE /* ConcretePhotoViewController.swift in Sources */,
+				53112C6A1E752FC50063C969 /* AlbumsViewController.swift in Sources */,
+				53E18E2F1E76E84C00A05966 /* Repository.swift in Sources */,
+				53E4F90A1E77154C00F5615C /* Store.swift in Sources */,
+				53112C781E75D3270063C969 /* PhotosViewController.swift in Sources */,
+				53E5B67B1E73F85B000205E4 /* AuthorizationViewController.swift in Sources */,
+				53E5B6791E73F85B000205E4 /* AppDelegate.swift in Sources */,
+				53112C7C1E75DA0D0063C969 /* Photo.swift in Sources */,
+				530ADDD61E774913008E37CA /* JSONParser.swift in Sources */,
+				53E5B68E1E73FA0C000205E4 /* VKPhotoDelegate.swift in Sources */,
+				53E5B6961E7441AB000205E4 /* AlbumTableViewCell.swift in Sources */,
+				53112C7A1E75D52B0063C969 /* PhotoTableViewCell.swift in Sources */,
+				53A388EE1E79A3D600C2958E /* LiveViewController.swift in Sources */,
+				53112C741E7580430063C969 /* BlueNavigationController.swift in Sources */,
+				53112C701E7570B20063C969 /* Album.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53E5B69E1E752AFC000205E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53E5B6A51E752AFC000205E4 /* vkPhotoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		53E5B6A81E752AFC000205E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53E5B6741E73F85B000205E4 /* vkPhoto */;
+			targetProxy = 53E5B6A71E752AFC000205E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		53E5B67C1E73F85B000205E4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53E5B67D1E73F85B000205E4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		53E5B6841E73F85B000205E4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53E5B6851E73F85B000205E4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		53E5B6881E73F85B000205E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		53E5B6891E73F85B000205E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		53E5B68B1E73F85B000205E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F8F5FFC44B84D9658A3A43D /* Pods-vkPhoto.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LHX7HSJRE3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = vkPhoto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ambarvlad.vkPhoto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		53E5B68C1E73F85B000205E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E05A71175632FC9C32E814D4 /* Pods-vkPhoto.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LHX7HSJRE3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = vkPhoto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ambarvlad.vkPhoto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		53E5B6AA1E752AFC000205E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = LHX7HSJRE3;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				INFOPLIST_FILE = vkPhotoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ambarvlad.vkPhotoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vkPhoto.app/vkPhoto";
+			};
+			name = Debug;
+		};
+		53E5B6AB1E752AFC000205E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = LHX7HSJRE3;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				INFOPLIST_FILE = vkPhotoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ambarvlad.vkPhotoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vkPhoto.app/vkPhoto";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53E5B6701E73F85B000205E4 /* Build configuration list for PBXProject "vkPhoto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53E5B6881E73F85B000205E4 /* Debug */,
+				53E5B6891E73F85B000205E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53E5B68A1E73F85B000205E4 /* Build configuration list for PBXNativeTarget "vkPhoto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53E5B68B1E73F85B000205E4 /* Debug */,
+				53E5B68C1E73F85B000205E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53E5B6A91E752AFC000205E4 /* Build configuration list for PBXNativeTarget "vkPhotoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53E5B6AA1E752AFC000205E4 /* Debug */,
+				53E5B6AB1E752AFC000205E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 53E5B66D1E73F85B000205E4 /* Project object */;
+}
