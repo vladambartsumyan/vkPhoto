@@ -106,9 +106,7 @@ class PhotosViewController: LiveViewController, UITableViewDelegate, UITableView
             loadPhotos()
         } else {
             offlineMode()
-            let alert = UIAlertController.init(title: nil, message: "Нет доступа к сети", preferredStyle: .alert)
-            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            showConnectionErrorWithAlert()
         }
     }
 }

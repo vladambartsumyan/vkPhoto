@@ -78,6 +78,13 @@ class LiveViewController: UIViewController {
         }
     }
     
+    func showConnectionErrorWithAlert() {
+        let alert = UIAlertController.init(title: nil, message: "Нет доступа к сети", preferredStyle: .alert)
+        let ok = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func offlineMode() {
         (self.navigationController as? BlueNavigationController)?.offlineMode()
     }

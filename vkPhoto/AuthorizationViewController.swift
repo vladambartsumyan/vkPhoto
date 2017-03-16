@@ -10,7 +10,7 @@ import UIKit
 import SwiftyVK
 import RealmSwift
 
-class AuthorizationViewController: UIViewController, VKAuthorizationObserver, UIAlertViewDelegate {
+class AuthorizationViewController: LiveViewController, VKAuthorizationObserver, UIAlertViewDelegate {
 
     @IBOutlet weak var buttonToBottom: NSLayoutConstraint!
     
@@ -22,18 +22,13 @@ class AuthorizationViewController: UIViewController, VKAuthorizationObserver, UI
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var reachability = Reachability()!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         (UIApplication.shared.delegate as! AppDelegate).vkdelegate.addObserver(self)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if needAnimation {
             self.logo.frame.origin.y = UIScreen.main.bounds.height / 2 - self.logo.frame.width / 2
             self.button.frame.origin.y += buttonToBottom.constant + self.button.frame.height
@@ -42,6 +37,10 @@ class AuthorizationViewController: UIViewController, VKAuthorizationObserver, UI
                 self.button.frame.origin.y -= self.buttonToBottom.constant + self.button.frame.height
             }, completion: nil)
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     func authorizationCompleted(_ result: AuthorizationResult) {
@@ -68,29 +67,26 @@ class AuthorizationViewController: UIViewController, VKAuthorizationObserver, UI
             VK.logIn()
         } else {
             stopLoading()
-            presentErrorAlert()
+            showConnectionErrorWithAlert()
         }
     }
     
-    func startLoading() {
+    override func startLoading() {
+        super.startLoading()
+        self.button.isUserInteractionEnabled = false
         DispatchQueue.main.async {
             self.button.setTitle("", for: .normal)
             self.activityIndicator.startAnimating()
         }
     }
     
-    func stopLoading() {
+    override func stopLoading() {
+        super.stopLoading()
+        self.button.isUserInteractionEnabled = true
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.button.setTitle("Войти через ВКонтакте", for: .normal)
         }
-    }
-    
-    func presentErrorAlert() {
-        let alert = UIAlertController.init(title: nil, message: "Отсутствует подключение к интернету", preferredStyle: .alert)
-        let ok = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
     }
 }
 

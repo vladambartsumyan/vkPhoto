@@ -59,10 +59,23 @@ class ConcretePhotoViewController: LiveViewController, UIScrollViewDelegate, UIG
             self.activityIndicator.stopAnimating()
             if image == nil {
                 self.offlineMode()
+                self.showSadCloud()
             }
         }
     }
 
+    func showSadCloud() {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let sadCloudVC = storyboard.instantiateViewController(withIdentifier: "sadCloud")
+        let sadCloudView = sadCloudVC.view!
+        sadCloudView.frame.size = CGSize.init(width: 300, height: 200)
+        sadCloudView.backgroundColor = UIColor.clear
+        sadCloudView.alpha = 0.8
+        sadCloudView.center = self.view.center
+        DispatchQueue.main.async {
+            self.view.addSubview(sadCloudView)
+        }
+    }
     
     func configMapView() {
         guard map == nil && photo.latitude.value != nil else { return }
